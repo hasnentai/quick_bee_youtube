@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'stacked_icons.dart';
+import 'home.dart';
+
+
+
 
 class LoginPage extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
+    
+SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+  statusBarColor: Colors.orange, //or set color with: Color(0xFF0000FF)
+));
     return new Scaffold(
       appBar: new AppBar(
-          backgroundColor: Colors.transparent,
+        backgroundColor:Colors.transparent,
           elevation: 0.0,
           iconTheme: new IconThemeData(color: Color(0xFF18D191))),
       body: Container(
@@ -52,15 +62,22 @@ class LoginPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(
                         left: 20.0, right: 5.0, top: 10.0),
-                    child: new Container(
-                        alignment: Alignment.center,
-                        height: 60.0,
-                        decoration: new BoxDecoration(
-                            color: Color(0xFF18D191),
-                            borderRadius: new BorderRadius.circular(9.0)),
-                        child: new Text("Login",
-                            style: new TextStyle(
-                                fontSize: 20.0, color: Colors.white))),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => HomePage()
+                        ));
+                      },
+                                          child: new Container(
+                            alignment: Alignment.center,
+                            height: 60.0,
+                            decoration: new BoxDecoration(
+                                color: Color(0xFF18D191),
+                                borderRadius: new BorderRadius.circular(9.0)),
+                            child: new Text("Login",
+                                style: new TextStyle(
+                                    fontSize: 20.0, color: Colors.white))),
+                    ),
                   ),
                 ),
                 Expanded(
